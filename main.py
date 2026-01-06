@@ -78,3 +78,18 @@ for k in range(N):
     plt.pause(dt)
     current_time = k*dt
     print("t= " + str(current_time))
+
+def next_x(current_x):
+    # state transition matrix
+    F = np.array([[1, 0, dt, 0],
+                  [0, 1, 0, dt],
+                  [0, 0, 1, 0],
+                  [0, 0, 0, 1]])
+
+
+    # process noise/ model missmatch 
+    w = np.matrix([[1], [1], [0], [0]])
+
+    next_x = F @ x + w
+
+    return next_x
